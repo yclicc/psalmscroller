@@ -1,0 +1,8 @@
+X: 1
+M: none
+L: 1/2
+K: E
+V: 1
+E2 | G c | B2 || A2 | B c | G F | E2 |]
+V: 2 clef=bass octave=-1
+G,2 | A, A, | B,2 || D2 | E A, | B, B, | E2 |]

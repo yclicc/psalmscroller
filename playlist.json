@@ -1,0 +1,60 @@
+[
+  {
+    "type": "heading",
+    "title": "Copyright",
+    "text": "Scripture quotations taken from The Holy Bible, New International Version® NIV®"
+  },
+  {
+    "type": "heading",
+    "text": "Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc."
+  },
+  {
+    "type": "heading",
+    "text": "Used with permission. All rights reserved worldwide."
+  },
+  {
+    "type": "heading",
+    "text": "All other elements, including pointing added to the NIV text, are copyright © 2025 by Yclicc, but are subject to the terms of the MIT license."
+  },
+  {
+    "type": "heading",
+    "title": "Book I (Psalms 1-41)"
+  },
+  {
+    "type": "heading",
+    "title": "1st Morning"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm001.abc",
+    "title": "Psalm 1",
+    "text": "Psalm001.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm002.abc",
+    "title": "Psalm 2",
+    "text": "Psalm002.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm003.abc",
+    "title": "Psalm 3",
+    "subtitle": "A psalm of David. When he fled from his son Absalom.",
+    "text": "Psalm003.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm004.abc",
+    "title": "Psalm 4",
+    "subtitle": "For the director of music. With stringed instruments. A psalm of David.",
+    "text": "Psalm004.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm005.abc",
+    "title": "Psalm 5",
+    "subtitle": "For the director of music. For pipes. A psalm of David.",
+    "text": "Psalm005.txt"
+  }
+]

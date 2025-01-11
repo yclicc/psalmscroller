@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NIV Pointed Psalms</title>
+
+        <!-- Include abcjs library -->
+        <script src="https://paulrosen.github.io/abcjs/dist/abcjs-basic.js"></script>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                line-height: 1.6;
+            }
+
+            .music-section {
+                margin-bottom: 40px;
+                position: relative;
+            }
+
+            .notation-container {
+                position: sticky;
+                top: 0px;
+                background: white;
+                max-width: 800px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .section-subtitle {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #666;
+            }
+
+            .section-text {
+                margin-top: 15px;
+                white-space: pre-wrap;
+            }
+
+            .header-link {
+                opacity: 0.15;
+                text-decoration: none;
+                margin-left: 0.5em;
+            }
+
+            .header-link:hover {
+                opacity: 1;
+            }
+
+            .toc {
+                margin: 20px 0;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .toc-title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .toc a {
+                display: block;
+                padding: 5px 0;
+                text-decoration: none;
+                color: #333;
+            }
+
+            .toc a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>NIV Pointed Psalms</h1>
+        <div id="toc" class="toc">
+            <div class="toc-title">Contents</div>
+        </div>
+        <div id="content"></div>
+
+        <script>
+            let musicData = [];
+            let abcContents = [];
+
+            // Function to create header link
+            function createHeaderLink(text) {
+                return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+            }
+
+            // Function to fetch file content
+            async function fetchFile(path) {
+                const response = await fetch(path);
+                return await response.text();
+            }
+
+            // Function to render ABC notation
+            function renderABC(elementId, abcString) {
+                ABCJS.renderAbc(elementId, abcString, {
+                    scale: 0.9,
+                    staffwidth:
+                        0.8 * document.getElementById("content").offsetWidth,
+                });
+            }
+
+            // Function to rerender all ABC notations
+            function rerenderAllABC() {
+                musicData.forEach((item, i) => {
+                    if (item.type === "psalm" && abcContents[i]) {
+                        renderABC(`abc${i}`, abcContents[i]);
+                    }
+                });
+            }
+
+            // Function to create and populate sections
+            async function createSections() {
+                const contentDiv = document.getElementById("content");
+                const tocDiv = document.getElementById("toc");
+
+                // Load playlist data
+                const playlistResponse = await fetch("./playlist.json");
+                musicData = await playlistResponse.json();
+
+                for (let i = 0; i < musicData.length; i++) {
+                    const item = musicData[i];
+
+                    if (item.type === "heading") {
+                        if (item.title) {
+                            // Create heading
+                            const headingElement = document.createElement(
+                                `h${item.level || 2}`,
+                            );
+                            const headingId = createHeaderLink(item.title);
+                            headingElement.innerHTML = `${item.title}<a href="#${headingId}" class="header-link">#</a>`;
+                            headingElement.id = headingId;
+                            contentDiv.appendChild(headingElement);
+
+                            // Add to table of contents
+                            const tocHeading = document.createElement("a");
+                            tocHeading.href = `#${headingId}`;
+                            tocHeading.textContent = item.title;
+                            tocHeading.style.fontWeight = "bold";
+                            tocDiv.appendChild(tocHeading);
+                        }
+
+                        if (item.text) {
+                            const textDiv = document.createElement("div");
+                            textDiv.textContent = item.text;
+                            contentDiv.appendChild(textDiv);
+                        }
+                    } else if (item.type === "psalm") {
+                        const section = document.createElement("div");
+                        section.className = "music-section";
+
+                        // Create and add title if it exists
+                        if (item.title) {
+                            const title = document.createElement("h3");
+                            title.className = "section-title";
+                            const titleId = createHeaderLink(item.title);
+                            title.innerHTML = `${item.title}<a href="#${titleId}" class="header-link">#</a>`;
+                            title.id = titleId;
+                            section.appendChild(title);
+
+                            // Add to table of contents
+                            const tocLink = document.createElement("a");
+                            tocLink.href = `#${titleId}`;
+                            tocLink.textContent = item.title;
+                            tocDiv.appendChild(tocLink);
+                        }
+
+                        // Create and add subtitle if it exists
+                        if (item.subtitle) {
+                            const subtitle = document.createElement("h4");
+                            subtitle.className = "section-subtitle";
+                            subtitle.textContent = item.subtitle;
+                            section.appendChild(subtitle);
+                        }
+
+                        // Create notation container
+                        const notationContainer = document.createElement("div");
+                        notationContainer.className = "notation-container";
+                        const abcElement = document.createElement("div");
+                        abcElement.className = "abc-element";
+                        abcElement.id = `abc${i}`;
+                        notationContainer.appendChild(abcElement);
+                        section.appendChild(notationContainer);
+
+                        // Create text container
+                        const textContainer = document.createElement("div");
+                        textContainer.className = "section-text";
+                        section.appendChild(textContainer);
+
+                        contentDiv.appendChild(section);
+
+                        // Fetch and render ABC notation
+                        const abcContent = await fetchFile(
+                            `./abc/${item.tune}`,
+                        );
+                        abcContents[i] = abcContent;
+                        renderABC(`abc${i}`, abcContent);
+
+                        // Fetch and add text
+                        const textContent = await fetchFile(
+                            `./text/${item.text}`,
+                        );
+                        textContainer.textContent = textContent;
+                    }
+                }
+            }
+
+            // Initialize the page
+            createSections();
+
+            // Add window resize handler
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(rerenderAllABC, 250);
+            });
+        </script>
+    </body>
+</html>
