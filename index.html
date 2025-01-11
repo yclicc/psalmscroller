@@ -205,7 +205,6 @@
                             `./abc/${item.tune}`,
                         );
                         abcContents[i] = abcContent;
-                        renderABC(`abc${i}`, abcContent);
 
                         // Fetch and add text
                         const textContent = await fetchFile(
@@ -218,6 +217,7 @@
 
             // Initialize the page
             createSections();
+            rerenderAllABC();
 
             // Add window resize handler
             let resizeTimeout;
