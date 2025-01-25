@@ -56,5 +56,17 @@
     "title": "Psalm 5",
     "subtitle": "For the director of music. For pipes. A psalm of David.",
     "text": "Psalm005.txt"
-  }
+  },
+  {
+    "type": "heading",
+    "title": "1st Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm006.abc",
+    "title": "Psalm 6",
+    "subtitle": "For the director of music. With stringed instruments. According to sheminith. A psalm of David."
+    "text": "Psalm006.txt"
+  },
+
 ]
