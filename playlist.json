@@ -67,5 +67,19 @@
     "title": "Psalm 6",
     "subtitle": "For the director of music. With stringed instruments. According to sheminith. A psalm of David.",
     "text": "Psalm006.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm007.abc",
+    "title": "Psalm 7",
+    "subtitle": "A shiggaion of David, which he sang to the Lord concerning Cush, a Benjaminite.",
+    "text": "Psalm007.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "Psalm008.abc",
+    "title": "Psalm 8",
+    "subtitle": "For the director of music. According to gittith. A psalm of David.",
+    "text": "Psalm008.txt"
   }
 ]
