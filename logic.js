@@ -1,5 +1,6 @@
 let musicData = [];
 let abcContents = [];
+let synthControls = [];
 
 // Function to create header link
 function createHeaderLink(text) {
@@ -15,9 +16,9 @@ async function fetchFile(path) {
 // Function to render ABC notation
 function renderABC(elementId, abcString) {
   const element = document.getElementById(elementId);
-  ABCJS.renderAbc(elementId, abcString, {
+  const visualObj = ABCJS.renderAbc(elementId, abcString, {
     staffwidth: document.getElementById("content").offsetWidth,
-  });
+  })[0];
 
   // Find the SVG and make it scale properly
   const svg = element.querySelector("svg");
@@ -33,6 +34,8 @@ function renderABC(elementId, abcString) {
     svg.setAttribute("height", box.height);
     element.style.height = `${box.height}px`;
   }
+
+  return visualObj;
 }
 
 // Function to rerender all ABC notations
@@ -42,6 +45,21 @@ function rerenderAllABC() {
       renderABC(`abc${i}`, abcContents[i]);
     }
   });
+}
+
+// Function to create audio player
+async function createAudioPlayer(visualObj, containerId) {
+  const synthControl = new ABCJS.synth.SynthController();
+  synthControl.load(`#${containerId}`, null, {
+    displayPlay: true,
+    displayProgress: true,
+  });
+
+  const createSynth = new ABCJS.synth.CreateSynth();
+  await createSynth.init({ visualObj });
+  await synthControl.setTune(visualObj, false);
+
+  return synthControl;
 }
 
 // Function to create and populate sections
@@ -117,6 +135,12 @@ async function createSections() {
       notationContainer.appendChild(abcElement);
       section.appendChild(notationContainer);
 
+      // Create audio container
+      const audioContainer = document.createElement("div");
+      audioContainer.className = "audio-container";
+      audioContainer.id = `audio${i}`;
+      section.appendChild(audioContainer);
+
       // Create text container
       const textContainer = document.createElement("div");
       textContainer.className = "section-text";
@@ -126,9 +150,10 @@ async function createSections() {
 
       // Add fetch promises to array
       fetchPromises.push(
-        fetchFile(`./abc/${item.tune}`).then((abcContent) => {
+        fetchFile(`./abc/${item.tune}`).then(async (abcContent) => {
           abcContents[i] = abcContent;
-          renderABC(`abc${i}`, abcContent);
+          const visualObj = renderABC(`abc${i}`, abcContent);
+          synthControls[i] = await createAudioPlayer(visualObj, `audio${i}`);
         }),
       );
 

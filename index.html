@@ -7,7 +7,11 @@
 
         <!-- Include abcjs library -->
         <script src="https://paulrosen.github.io/abcjs/dist/abcjs-basic.js"></script>
-
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://paulrosen.github.io/abcjs/abcjs-audio.css"
+        />
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -28,6 +32,7 @@
                 top: 0px;
                 background: white;
                 max-width: 800px;
+                z-index: 2;
             }
 
             .section-title {
@@ -77,6 +82,10 @@
 
             .toc a:hover {
                 text-decoration: underline;
+            }
+
+            .abcjs-midi-progress-background {
+                z-index: 1;
             }
         </style>
     </head>
