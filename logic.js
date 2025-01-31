@@ -159,6 +159,11 @@ async function createSections() {
 
       fetchPromises.push(
         fetchFile(`./text/${item.text}`).then((textContent) => {
+          // Add word joiners around split markers to prevent line breaks across words
+          textContent = textContent.replace(
+            /(\S)([\|·])(\S)/g,
+            "$1\u2060$2\u2060$3",
+          );
           textContainer.textContent = textContent;
         }),
       );
