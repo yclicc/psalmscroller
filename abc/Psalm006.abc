@@ -3,6 +3,6 @@ M: none
 L: 1/2
 K: Dm
 V: 1
-D2 | D D | E2   || E2 | F G | A F | E2   || E2 | D E | F2 || G2 | A c | A F | D2 |]
+D2 | E F | G2 || A2 | =B ^c | d A | =B2 || A2 | B G | A2 || F2 | E G | F F | D2 |]
 V: 2 clef=bass octave=-1
-D2 | C B, | A,2 || ^C2 | D E | F ^G | A2 || G2 | F E | D2 || E2 | D D | ^C C | D2 |]
+F2 | G A | E2 || ^F2 | G A | ^F F | G2  || F2 | G E | F2 || D2 | C C | G, A, | D2 |]
