@@ -13,6 +13,20 @@ async function fetchFile(path) {
   return await response.text();
 }
 
+// Function to process text content
+function processTextContent(text) {
+  // Handle word breaks by adding word joiners
+  text = text.replace(/(\S)([\|·])(\S)/g, "$1\u2060$2\u2060$3");
+
+  // Convert markdown-style **text** to HTML <strong> tags
+  text = text.replace(/\*\*(?!\s)([^\*]+)(?<!\s)\*\*/g, "<strong>$1</strong>");
+
+  // Convert markdown-style *text* to HTML <em> tags
+  text = text.replace(/\*(?!\s)([^\*]+)(?<!\s)\*/g, "<em>$1</em>");
+
+  return text;
+}
+
 // Function to render ABC notation
 function renderABC(elementId, abcString) {
   const element = document.getElementById(elementId);
@@ -81,21 +95,21 @@ async function createSections() {
         // Create heading
         const headingElement = document.createElement(`h${item.level || 2}`);
         const headingId = createHeaderLink(item.title);
-        headingElement.innerHTML = `${item.title}<a href="#${headingId}" class="header-link">#</a>`;
+        headingElement.innerHTML = `${processTextContent(item.title)}<a href="#${headingId}" class="header-link">#</a>`;
         headingElement.id = headingId;
         contentDiv.appendChild(headingElement);
 
         // Add to table of contents
         const tocHeading = document.createElement("a");
         tocHeading.href = `#${headingId}`;
-        tocHeading.textContent = item.title;
+        tocHeading.innerHTML = processTextContent(item.title);
         tocHeading.style.fontWeight = "bold";
         tocDiv.appendChild(tocHeading);
       }
 
       if (item.text) {
         const textDiv = document.createElement("div");
-        textDiv.textContent = item.text;
+        textDiv.innerHTML = processTextContent(item.text);
         contentDiv.appendChild(textDiv);
       }
     } else if (item.type === "psalm") {
@@ -107,14 +121,14 @@ async function createSections() {
         const title = document.createElement("h3");
         title.className = "section-title";
         const titleId = createHeaderLink(item.title);
-        title.innerHTML = `${item.title}<a href="#${titleId}" class="header-link">#</a>`;
+        title.innerHTML = `${processTextContent(item.title)}<a href="#${titleId}" class="header-link">#</a>`;
         title.id = titleId;
         section.appendChild(title);
 
         // Add to table of contents
         const tocLink = document.createElement("a");
         tocLink.href = `#${titleId}`;
-        tocLink.textContent = item.title;
+        tocLink.innerHTML = processTextContent(item.title);
         tocDiv.appendChild(tocLink);
       }
 
@@ -122,7 +136,7 @@ async function createSections() {
       if (item.subtitle) {
         const subtitle = document.createElement("h4");
         subtitle.className = "section-subtitle";
-        subtitle.textContent = item.subtitle;
+        subtitle.innerHTML = processTextContent(item.subtitle);
         section.appendChild(subtitle);
       }
 
@@ -159,12 +173,7 @@ async function createSections() {
 
       fetchPromises.push(
         fetchFile(`./text/${item.text}`).then((textContent) => {
-          // Add word joiners around split markers to prevent line breaks across words
-          textContent = textContent.replace(
-            /(\S)([\|·])(\S)/g,
-            "$1\u2060$2\u2060$3",
-          );
-          textContainer.textContent = textContent;
+          textContainer.innerHTML = processTextContent(textContent);
         }),
       );
     }
