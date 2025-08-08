@@ -30,33 +30,33 @@
   },
   {
     "type": "psalm",
-    "tune": "Psalm001.abc",
+    "tune": "FussellF.abc",
     "title": "Psalm 1",
     "text": "Psalm001.txt"
   },
   {
     "type": "psalm",
-    "tune": "Psalm002.abc",
+    "tune": "TurnerC.abc",
     "title": "Psalm 2",
     "text": "Psalm002.txt"
   },
   {
     "type": "psalm",
-    "tune": "Psalm003.abc",
+    "tune": "GauntlettG.abc",
     "title": "Psalm 3",
     "subtitle": "A psalm of David. When he fled from his son Absalom.",
     "text": "Psalm003.txt"
   },
   {
     "type": "psalm",
-    "tune": "Psalm004.abc",
+    "tune": "SoaperD.abc",
     "title": "Psalm 4",
     "subtitle": "For the director of music. With stringed instruments. A psalm of David.",
     "text": "Psalm004.txt"
   },
   {
     "type": "psalm",
-    "tune": "Psalm005.abc",
+    "tune": "WoodsG.abc",
     "title": "Psalm 5",
     "subtitle": "For the director of music. For pipes. A psalm of David.",
     "text": "Psalm005.txt"

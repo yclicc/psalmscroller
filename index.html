@@ -9,7 +9,15 @@
         <script defer data-domain="yclicc.github.io/psalmscroller" src="https://plausible.io/js/script.hash.js"></script>
         
         <!-- Include abcjs library -->
-        <script src="https://paulrosen.github.io/abcjs/dist/abcjs-basic.js"></script>
+        <script>
+            var script = document.createElement("script");
+            if (window.location.hostname === "localhost") {
+                script.src = "./abcjs/abcjs-basic-min.js";
+            } else {
+                script.src = "https://paulrosen.github.io/abcjs/dist/abcjs-basic.js";
+            }
+            document.head.appendChild(script);
+        </script>        
         <link
             rel="stylesheet"
             type="text/css"

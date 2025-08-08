@@ -1,0 +1,14 @@
+X:1
+C: H. J. Gauntlett
+M: none
+L:1/2
+%%staves [(1 2) (3 4)]
+K:D
+V:1 clef=treble
+F2 | E F | G2 || B2 | A B | A ^G | A2|| A2 | A ^G | F2 || A2 | d E | F E | D2 |]
+V:2 clef=treble
+D2 | C D | D2 || G2 | F F | E E | E2 || F2 | F ^E | F2 || F2 | F E | D C | D2 |]
+V:3 clef=bass octave=-1
+A2 | A A | B2 || c2 | d d | c B | c2 || c2 | c B | A2 || d2 | d B | A G | F2 |]
+V:4 clef=bass octave=-1
+D2 | A, D | G2 || E2 | F D | E E | A,2 || F2 | C C | F2 || D2 | B, G | A A, | D2 |]
