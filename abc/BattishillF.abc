@@ -8,8 +8,7 @@ V:1 clef=treble
 F2 | E F | B2 || A2 | d c | B B | A2 |]
 V:2 clef=treble
 C2 | B, C | C2 || C2 | D F | F E | F2 |]
-#TBD
 V:3 clef=bass octave=-1
-d2 | d c | c2 || ^c2 | d B | A>G | F2 |]
+A2 | B A | G2 || F2 | F c | d c | c2 |]
 V:4 clef=bass octave=-1
-D2 | B, F | C2 || A,2 | B, G, | A, A, | D2 |]
+A2 | G F | E2 || F2 | B, A, | G, C | F2 |]
