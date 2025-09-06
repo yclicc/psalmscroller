@@ -67,10 +67,15 @@
   },
   {
     "type": "psalm",
-    "tune": "CrotchF.abc",
+    "tune": "CrotchDm.abc",
     "title": "Psalm 6",
     "subtitle": "For the director of music. With stringed instruments. According to *sheminith*. A psalm of David.",
-    "text": "Psalm006.txt"
+    "text": "Psalm006a.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "BattishillF.abc"
+    "text": "Psalm006b.txt"
   },
   {
     "type": "psalm",
@@ -81,7 +86,7 @@
   },
   {
     "type": "psalm",
-    "tune": "Psalm008.abc",
+    "tune": "OuseleyEb.abc",
     "title": "Psalm 8",
     "subtitle": "For the director of music. According to *gittith*. A psalm of David.",
     "text": "Psalm008.txt"
