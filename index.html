@@ -135,6 +135,47 @@
                 min-width: 40px;
                 text-align: center;
             }
+
+            .voice-controls {
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .voice-label {
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            .voice-button {
+                background-color: #f0f0f0;
+                color: #666;
+                border: 1px solid #ddd;
+                padding: 8px 12px;
+                cursor: pointer;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: bold;
+                min-width: 35px;
+                transition: all 0.2s ease;
+            }
+
+            .voice-button:hover {
+                background-color: #e0e0e0;
+                border-color: #ccc;
+            }
+
+            .voice-button.active {
+                background-color: #333;
+                color: white;
+                border-color: #333;
+            }
+
+            .voice-button.active:hover {
+                background-color: #555;
+                border-color: #555;
+            }
         </style>
     </head>
     <body>
@@ -143,6 +184,13 @@
             <button class="transpose-button" onclick="transposeDown()">Transpose Down</button>
             <div class="transpose-display" id="transpose-display">0</div>
             <button class="transpose-button" onclick="transposeUp()">Transpose Up</button>
+        </div>
+        <div class="voice-controls">
+            <label class="voice-label">Voices:</label>
+            <button class="voice-button active" id="voice-S" onclick="toggleVoice('S')">S</button>
+            <button class="voice-button active" id="voice-A" onclick="toggleVoice('A')">A</button>
+            <button class="voice-button active" id="voice-T" onclick="toggleVoice('T')">T</button>
+            <button class="voice-button active" id="voice-B" onclick="toggleVoice('B')">B</button>
         </div>
         <div id="toc" class="toc">
             <div class="toc-title">Contents</div>

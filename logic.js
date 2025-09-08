@@ -9,6 +9,79 @@ function getTranspose() {
   return tParam ? parseInt(tParam, 10) : 0;
 }
 
+// Function to get voices value from URL parameter
+function getVoices() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const vParam = urlParams.get("v");
+  return vParam ? vParam.toUpperCase() : "SATB";
+}
+
+// Function to filter ABC content by voices
+function filterABCByVoices(abcContent, voices) {
+  const lines = abcContent.split('\n');
+  const filteredLines = [];
+  let skipNextLine = false;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    // Skip this line if marked from previous iteration
+    if (skipNextLine) {
+      skipNextLine = false;
+      continue;
+    }
+    
+    // Filter %%staves line
+    if (line.startsWith('%%staves')) {
+      const stavesMatch = line.match(/%%staves\s*\[(.*?)\]/);
+      if (stavesMatch) {
+        const stavesContent = stavesMatch[1];
+        const groups = stavesContent.split(') (');
+        const filteredGroups = [];
+        
+        groups.forEach(group => {
+          const cleanGroup = group.replace(/[\(\)]/g, '');
+          const voicesInGroup = cleanGroup.split(' ').filter(v => v.trim());
+          const filteredVoicesInGroup = voicesInGroup.filter(voice => 
+            voices.includes(voice.trim())
+          );
+          
+          if (filteredVoicesInGroup.length > 0) {
+            filteredGroups.push(`(${filteredVoicesInGroup.join(' ')})`);
+          }
+        });
+        
+        if (filteredGroups.length > 0) {
+          filteredLines.push(`%%staves [${filteredGroups.join(' ')}]`);
+        }
+      } else {
+        filteredLines.push(line);
+      }
+    }
+    // Filter voice lines (V:S, V:A, etc.)
+    else if (line.match(/^V:[SATB]/)) {
+      const voiceMatch = line.match(/^V:([SATB])/);
+      if (voiceMatch && voices.includes(voiceMatch[1])) {
+        filteredLines.push(line);
+        // Include the next line (the actual music content for this voice)
+        if (i + 1 < lines.length) {
+          filteredLines.push(lines[i + 1]);
+          i++; // Skip the next line in the main loop since we already processed it
+        }
+      } else {
+        // Skip this voice line and the next line (music content)
+        skipNextLine = true;
+      }
+    }
+    // Keep all other lines
+    else {
+      filteredLines.push(line);
+    }
+  }
+  
+  return filteredLines.join('\n');
+}
+
 // Function to update transpose display
 function updateTransposeDisplay() {
   const display = document.getElementById("transpose-display");
@@ -16,6 +89,50 @@ function updateTransposeDisplay() {
     const currentTranspose = getTranspose();
     display.textContent = currentTranspose > 0 ? `+${currentTranspose}` : currentTranspose.toString();
   }
+}
+
+// Function to update voices display
+function updateVoicesDisplay() {
+  const currentVoices = getVoices();
+  ['S', 'A', 'T', 'B'].forEach(voice => {
+    const button = document.getElementById(`voice-${voice}`);
+    if (button) {
+      if (currentVoices.includes(voice)) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    }
+  });
+}
+
+// Function to update URL voices parameter
+function updateVoices(newVoices) {
+  const url = new URL(window.location);
+  if (newVoices === "SATB") {
+    url.searchParams.delete("v");
+  } else {
+    url.searchParams.set("v", newVoices);
+  }
+  window.history.replaceState({}, "", url);
+  updateVoicesDisplay();
+  rerenderAllABC();
+}
+
+// Function to toggle voice
+function toggleVoice(voice) {
+  const currentVoices = getVoices();
+  let newVoices;
+  
+  if (currentVoices.includes(voice)) {
+    newVoices = currentVoices.replace(voice, '');
+  } else {
+    newVoices = currentVoices + voice;
+  }
+  
+  // Sort voices in SATB order
+  const sortedVoices = ['S', 'A', 'T', 'B'].filter(v => newVoices.includes(v)).join('');
+  updateVoices(sortedVoices || 'SATB');
 }
 
 // Function to update URL parameter and rerender
@@ -69,9 +186,10 @@ function processTextContent(text) {
 }
 
 // Function to render ABC notation
-function renderABC(elementId, abcString, transpose = 0) {
+function renderABC(elementId, abcString, transpose = 0, voices = "SATB") {
   const element = document.getElementById(elementId);
-  const visualObj = ABCJS.renderAbc(elementId, abcString, {
+  const filteredAbc = filterABCByVoices(abcString, voices);
+  const visualObj = ABCJS.renderAbc(elementId, filteredAbc, {
     staffwidth: document.getElementById("content").offsetWidth,
     visualTranspose: transpose,
   })[0];
@@ -97,11 +215,12 @@ function renderABC(elementId, abcString, transpose = 0) {
 // Function to rerender all ABC notations
 function rerenderAllABC() {
   let transpose = getTranspose();
+  let voices = getVoices();
   const updatePromises = [];
   
   musicData.forEach((item, i) => {
     if (item.type === "psalm" && abcContents[i]) {
-      const visualObj = renderABC(`abc${i}`, abcContents[i], transpose);
+      const visualObj = renderABC(`abc${i}`, abcContents[i], transpose, voices);
       updatePromises.push(
         createAudioPlayer(visualObj, `audio${i}`, transpose).then((synthControl) => {
           synthControls[i] = synthControl;
@@ -143,6 +262,7 @@ async function createSections() {
   const fetchPromises = [];
 
   let transpose = getTranspose();
+  let voices = getVoices();
 
   for (let i = 0; i < musicData.length; i++) {
     const item = musicData[i];
@@ -223,7 +343,7 @@ async function createSections() {
       fetchPromises.push(
         fetchFile(`./abc/${item.tune}`).then(async (abcContent) => {
           abcContents[i] = abcContent;
-          const visualObj = renderABC(`abc${i}`, abcContent, transpose);
+          const visualObj = renderABC(`abc${i}`, abcContent, transpose, voices);
           synthControls[i] = await createAudioPlayer(
             visualObj,
             `audio${i}`,
@@ -258,6 +378,7 @@ async function createSections() {
 // Initialize the page
 createSections().then(() => {
   updateTransposeDisplay();
+  updateVoicesDisplay();
 });
 
 // Add window resize handler
