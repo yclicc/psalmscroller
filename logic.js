@@ -2,6 +2,37 @@ let musicData = [];
 let abcContents = [];
 let synthControls = [];
 
+// Function to get transpose value from URL parameter
+function getTranspose() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tParam = urlParams.get("t");
+  return tParam ? parseInt(tParam, 10) : 0;
+}
+
+// Function to update URL parameter and rerender
+function updateTranspose(newValue) {
+  const url = new URL(window.location);
+  if (newValue === 0) {
+    url.searchParams.delete("t");
+  } else {
+    url.searchParams.set("t", newValue);
+  }
+  window.history.replaceState({}, "", url);
+  rerenderAllABC();
+}
+
+// Function to transpose up
+function transposeUp() {
+  const currentTranspose = getTranspose();
+  updateTranspose(currentTranspose + 1);
+}
+
+// Function to transpose down
+function transposeDown() {
+  const currentTranspose = getTranspose();
+  updateTranspose(currentTranspose - 1);
+}
+
 // Function to create header link
 function createHeaderLink(text) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -28,10 +59,11 @@ function processTextContent(text) {
 }
 
 // Function to render ABC notation
-function renderABC(elementId, abcString) {
+function renderABC(elementId, abcString, transpose = 0) {
   const element = document.getElementById(elementId);
   const visualObj = ABCJS.renderAbc(elementId, abcString, {
     staffwidth: document.getElementById("content").offsetWidth,
+    visualTranspose: transpose,
   })[0];
 
   // Find the SVG and make it scale properly
@@ -54,15 +86,25 @@ function renderABC(elementId, abcString) {
 
 // Function to rerender all ABC notations
 function rerenderAllABC() {
+  let transpose = getTranspose();
+  const updatePromises = [];
+  
   musicData.forEach((item, i) => {
     if (item.type === "psalm" && abcContents[i]) {
-      renderABC(`abc${i}`, abcContents[i]);
+      const visualObj = renderABC(`abc${i}`, abcContents[i], transpose);
+      updatePromises.push(
+        createAudioPlayer(visualObj, `audio${i}`, transpose).then((synthControl) => {
+          synthControls[i] = synthControl;
+        })
+      );
     }
   });
+  
+  Promise.all(updatePromises);
 }
 
 // Function to create audio player
-async function createAudioPlayer(visualObj, containerId) {
+async function createAudioPlayer(visualObj, containerId, transpose = 0) {
   const synthControl = new ABCJS.synth.SynthController();
   synthControl.load(`#${containerId}`, null, {
     displayPlay: true,
@@ -71,7 +113,10 @@ async function createAudioPlayer(visualObj, containerId) {
 
   const createSynth = new ABCJS.synth.CreateSynth();
   await createSynth.init({ visualObj });
-  await synthControl.setTune(visualObj, false);
+  await synthControl.setTune(visualObj, false, {
+    chordsOff: true,
+    midiTranspose: transpose,
+  });
 
   return synthControl;
 }
@@ -86,6 +131,8 @@ async function createSections() {
   musicData = await playlistResponse.json();
 
   const fetchPromises = [];
+
+  let transpose = getTranspose();
 
   for (let i = 0; i < musicData.length; i++) {
     const item = musicData[i];
@@ -166,8 +213,12 @@ async function createSections() {
       fetchPromises.push(
         fetchFile(`./abc/${item.tune}`).then(async (abcContent) => {
           abcContents[i] = abcContent;
-          const visualObj = renderABC(`abc${i}`, abcContent);
-          synthControls[i] = await createAudioPlayer(visualObj, `audio${i}`);
+          const visualObj = renderABC(`abc${i}`, abcContent, transpose);
+          synthControls[i] = await createAudioPlayer(
+            visualObj,
+            `audio${i}`,
+            transpose,
+          );
         }),
       );
 

@@ -14,7 +14,7 @@
             if (window.location.hostname === "localhost") {
                 script.src = "./abcjs/abcjs-basic-min.js";
             } else {
-                script.src = "https://paulrosen.github.io/abcjs/dist/abcjs-basic.js";
+                script.src = "https://cdn.jsdelivr.net/npm/abcjs@6.5.2/dist/abcjs-basic-min.js";
             }
             document.head.appendChild(script);
         </script>        
@@ -102,6 +102,10 @@
     </head>
     <body>
         <h1>NIV Pointed Psalms</h1>
+        <div style="margin-bottom: 10px;">
+            <button onclick="transposeDown()">Transpose Down</button>
+            <button onclick="transposeUp()">Transpose Up</button>
+        </div>
         <div id="toc" class="toc">
             <div class="toc-title">Contents</div>
         </div>
