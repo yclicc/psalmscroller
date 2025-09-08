@@ -9,6 +9,15 @@ function getTranspose() {
   return tParam ? parseInt(tParam, 10) : 0;
 }
 
+// Function to update transpose display
+function updateTransposeDisplay() {
+  const display = document.getElementById("transpose-display");
+  if (display) {
+    const currentTranspose = getTranspose();
+    display.textContent = currentTranspose > 0 ? `+${currentTranspose}` : currentTranspose.toString();
+  }
+}
+
 // Function to update URL parameter and rerender
 function updateTranspose(newValue) {
   const url = new URL(window.location);
@@ -18,6 +27,7 @@ function updateTranspose(newValue) {
     url.searchParams.set("t", newValue);
   }
   window.history.replaceState({}, "", url);
+  updateTransposeDisplay();
   rerenderAllABC();
 }
 
@@ -246,7 +256,9 @@ async function createSections() {
 }
 
 // Initialize the page
-createSections();
+createSections().then(() => {
+  updateTransposeDisplay();
+});
 
 // Add window resize handler
 let resizeTimeout;

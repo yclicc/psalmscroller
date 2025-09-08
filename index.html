@@ -98,13 +98,51 @@
             .abcjs-midi-progress-background {
                 z-index: 1;
             }
+
+            .transpose-controls {
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .transpose-button {
+                background-color: #333;
+                color: white;
+                border: 1px solid #333;
+                padding: 8px 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            .transpose-button:hover {
+                background-color: #555;
+                border-color: #555;
+            }
+
+            .transpose-button:active {
+                background-color: #222;
+                border-color: #222;
+            }
+
+            .transpose-display {
+                font-weight: bold;
+                padding: 8px 12px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background-color: #f9f9f9;
+                min-width: 40px;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <h1>NIV Pointed Psalms</h1>
-        <div style="margin-bottom: 10px;">
-            <button onclick="transposeDown()">Transpose Down</button>
-            <button onclick="transposeUp()">Transpose Up</button>
+        <div class="transpose-controls">
+            <button class="transpose-button" onclick="transposeDown()">Transpose Down</button>
+            <div class="transpose-display" id="transpose-display">0</div>
+            <button class="transpose-button" onclick="transposeUp()">Transpose Up</button>
         </div>
         <div id="toc" class="toc">
             <div class="toc-title">Contents</div>
