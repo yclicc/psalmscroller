@@ -1,0 +1,14 @@
+X:1
+C: G. J. Elvey
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:C
+V:S clef=treble
+c2 | e c | G2 || E2 | G A | B c | (c B) || c2 | e c | A2 || G2 | E F | E D | C2 |]
+V:A clef=treble
+E2 | G C | D2 || C2 | C C | F E | (E D) || G2 | E G | F2 || D2 | C C | C B, | C2 |]
+V:T clef=bass octave=-1
+c2 | c e | G2 || G2 | G c | d G | G2 || G2 | G c | c2 || G2 | G A | G>F | E2 |]
+V:B clef=bass octave=-1
+C2 | C C | B,2 || C2 | E F | D C | G2 || E2 | C E | F2 || B,2 | C F | G G, | C2 |]

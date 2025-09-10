@@ -94,5 +94,16 @@
     "title": "Psalm 8",
     "subtitle": "For the director of music. According to *gittith*. A psalm of David.",
     "text": "Psalm008.txt"
+  },
+  {
+    "type": "heading",
+    "title": "16th Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "ElveyC.abc",
+    "title": "Psalm 84",
+    "subtitle": "For the director of music. According to *gittith*. Of the Sons of Korah. A psalm.",
+    "text": "Psalm084.txt"
   }
 ]
