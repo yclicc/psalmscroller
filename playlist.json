@@ -105,5 +105,15 @@
     "title": "Psalm 84",
     "subtitle": "For the director of music. According to *gittith*. Of the Sons of Korah. A psalm.",
     "text": "Psalm084.txt"
+  },
+  {
+    "type": "heading",
+    "title": "19th Morning"
+  },
+  {
+    "type": "psalm",
+    "tune": "CrotchBb.abc",
+    "title": "Psalm 95",
+    "text": "Psalm095.txt"
   }
 ]

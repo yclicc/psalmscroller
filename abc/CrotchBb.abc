@@ -1,0 +1,14 @@
+X:1
+C: W. Crotch
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Bb
+V:S clef=treble
+B2 | B A | B2 || G2 | F B | B A | B2 |]
+V:A clef=treble
+F2 | F F | F2 || E2 | D =E | F F | F2 |]
+V:T clef=bass octave=-1
+d2 | d c | d2 || B2 | B B | c c | d2 |]
+V:B clef=bass octave=-1
+B2 | B F | B2 || E2 | B G | F F | B2 |]
