@@ -97,6 +97,17 @@
   },
   {
     "type": "heading",
+    "title": "10th Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "NaresAb.abc",
+    "title": "Psalm 54",
+    "subtitle": "For the director of music. With stringed instruments. A *maskil* of David. When the Ziphites had gone to Saul and said, 'Is not David hiding among us?'",
+    "text": "Psalm054.txt"
+  },
+  {
+    "type": "heading",
     "title": "12th Evening"
   },
   {
