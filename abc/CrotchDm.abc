@@ -5,7 +5,7 @@ L:1/2
 %%staves [(S A) (T B)]
 K:F
 V:S clef=treble
-A2 | B A | G2 || A2 | F G | F E | D2 |]
+"Dm" A2 | "Bb" B "F" A | "C" G2 || "A" A2 | "Bb" F "G" G | "Dm" F "A" E | "Dm" D2 |]
 V:A clef=treble
 F2 | F F | E2 || E2 | D D | D ^C | D2 |]
 V:T clef=bass octave=-1
