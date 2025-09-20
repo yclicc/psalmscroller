@@ -97,6 +97,17 @@
   },
   {
     "type": "heading",
+    "title": "12th Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "NaresG.abc",
+    "title": "Psalm 67",
+    "subtitle": "For the director of music. With stringed instruments. A psalm. A song.",
+    "text": "Psalm067.txt"
+  },
+  {
+    "type": "heading",
     "title": "16th Evening"
   },
   {
