@@ -1,0 +1,14 @@
+X:1
+C: J. Nares
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Ab
+V:S clef=treble
+"Ab" A2 | "Eb7" G "Ab" A | "Eb" B2 || "Ab" c2 | "Db" F "Bb" B | "Ab" A "Eb" G | "Ab" A2 |]
+V:A clef=treble
+E2 | E E | E2 || E2 | D F | E E | E2 |]
+V:T clef=bass octave=-1
+A2 | d c | B2 || A2 | A d | c B | c2 |]
+V:B clef=bass octave=-1
+C2 | B, A, | G,2 || A,2 | D B, | E E | A,2 |]
