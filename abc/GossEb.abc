@@ -1,0 +1,14 @@
+X:1
+C: J. Goss
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Eb
+V:S clef=treble
+B2 | A A | G2 || F2 | E A | A G | F2 || B2 | d d | e2 || G2 | B A | G F | E2 |]
+V:A clef=treble
+E2 | E E | E2 || D2 | E E | F E | D2 || E2 | A A | G2 || E2 | E E | E D | E2 |]
+V:T clef=bass octave=-1
+G2 | c c | B2 || A2 | G c | B B | B2 || B2 | B B | B2 || B2 | E F | G A | G2 |]
+V:B clef=bass octave=-1
+E2 | E E | E2 || B,2 | C C | D E | B,2 || G2 | F F | E2 || _D2 | C C | B, B, | E2 |]

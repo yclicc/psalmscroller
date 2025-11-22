@@ -1,0 +1,14 @@
+X:1
+C: Rimbault
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:F
+V:S clef=treble
+c2 | A d | c2 || c2 | A B | G G | F2 |]
+V:A clef=treble
+F2 | F F | F2 || E2 | F F | F E | F2 |]
+V:T clef=bass octave=-1
+A2 | c B | A2 || G2 | F d | c > B | A2 |]
+V:B clef=bass octave=-1
+F2 | F B, | F2 || C2 | D B, | C C | F2 |]

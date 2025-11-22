@@ -1,0 +1,14 @@
+X:1
+C: from Purcell
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Fm
+V:S clef=treble
+F2 | F F | F2 || F2 | G A | G F | =E2 || G2 | G G | A2 || B2 | =E F | F =E | F2 |]
+V:A clef=treble
+C2 | C C | D2 || D2 | D D | D D | C2 || =E2 | =E E | _E2 || B,2 | C C | C C | C2 |]
+V:T clef=bass octave=-1
+=A2 | =A A | _A2 || A2 | B c | B A | G2 || c2 | c c | c2 || F2 | G A | G G | =A2 |]
+V:B clef=bass octave=-1
+F2 | F F | D2 || D2 | B, B, | B, B, | C2 || C2 | C C | A,2 || D2 | C F | C C | F2 |]

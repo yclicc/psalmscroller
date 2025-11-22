@@ -1,0 +1,14 @@
+X:1
+C: T. Kempton
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:A
+V:S clef=treble
+A2 | A B | G2 || A2 | F/2 G/2 A | A G | A2 |]
+V:A clef=treble
+E2 | E ^D | E2 || E2 | F E | E > D | C2 |]
+V:T clef=bass octave=-1
+c2 | c B | B2 || A2 | A/2 B/2 c | B B | A2 |]
+V:B clef=bass octave=-1
+A2 | F B, | E2 || C2 | D A, | E E | A,2 |]

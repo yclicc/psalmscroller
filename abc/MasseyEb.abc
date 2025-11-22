@@ -1,0 +1,14 @@
+X:1
+C: R. Massey
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Eb
+V:S clef=treble
+B2 | G B | E2 || E2 | F G | A c | F2 || B2 | d B | e2 || G2 | A c | B > A | G2 |]
+V:A clef=treble
+E2 | E F | E2 || E2 | C =E | F _E | D2 || D2 | F D | E2 || E2 | F C | E D | E2 |]
+V:T clef=bass octave=-1
+G2 | B B | G2 || B2 | A B | c c | B2 || B2 | B B | B2 || c2 | c A | G B | B2 |]
+V:B clef=bass octave=-1
+E2 | E D | C2 || G2 | A G | F A, | B,2 || B,2 | B A | G2 || c2 | A F | B, B, || E2 |]

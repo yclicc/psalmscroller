@@ -1,0 +1,14 @@
+X:1
+C: C. A. Wickes
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Ab
+V:S clef=treble
+A2 | B c | d2 || F2 | G A | A G | A2 |]
+V:A clef=treble
+E2 | F _G | F2 || F2 | E E | F E | E2 |]
+V:T clef=bass octave=-1
+c2 | d e | d2 || A2 | B A | d B | c2 |]
+V:B clef=bass octave=-1
+A2 | A A | D2 || D2 | D C | B, E | A,2 |]

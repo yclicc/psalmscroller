@@ -1,0 +1,14 @@
+X:1
+C: S. S. Wesley
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:Fm
+V:S clef=treble
+A2 | A B | G2 || _G2 | _G F | F =E | F2 |]
+V:A clef=treble
+F2 | F F | (F E) || E2 | D D | C C | C2 |]
+V:T clef=bass octave=-1
+c2 | c d | B2 || C2 | A A | G G | A2 |]
+V:B clef=bass octave=-1
+F2 | F B, | E2 || A,2 | D B, | C C | F2 |]

@@ -1,0 +1,14 @@
+X:1
+C: V. Novello
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:G
+V:S clef=treble
+G2 | B G | c2 || A2 | d G | B A | G2 |]
+V:A clef=treble
+D2 | D E | E2 || D2 | D ^C | D > =C | B,2 |]
+V:T clef=bass octave=-1
+B2 | B B | A2 || F2 | G G | G F | G2 |]
+V:B clef=bass octave=-1
+G2 | G E | A,2 || D2 | B, E | D D | G,2 |]

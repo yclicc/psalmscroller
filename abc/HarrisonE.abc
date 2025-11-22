@@ -1,0 +1,14 @@
+X:1
+C: J. Harrison
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:E
+V:S clef=treble
+E2 | G B | e2 || B2 | G c | F F | E2 |]
+V:A clef=treble
+E2 | E F | G2 || F2 | E E | E D | E2 |]
+V:T clef=bass octave=-1
+G2 | B B | G2 || B2 | B F | B B | G2 |]
+V:B clef=bass octave=-1
+E2 | E D | C2 || D2 | E A, | B, B, | E2 |]

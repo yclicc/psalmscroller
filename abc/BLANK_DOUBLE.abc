@@ -1,0 +1,14 @@
+X:1
+C: COMPOSER
+M: none
+L:1/2
+%%staves [(S A) (T B)]
+K:C
+V:S clef=treble
+X2 | X X | X2 || X2 | X X | X X | X2 || X2 | X X | X2 || X2 | X X | X X | X2 |]
+V:A clef=treble
+X2 | X X | X2 || X2 | X X | X X | X2 || X2 | X X | X2 || X2 | X X | X X | X2 |]
+V:T clef=bass octave=-1
+X2 | X X | X2 || X2 | X X | X X | X2 || X2 | X X | X2 || X2 | X X | X X | X2 |]
+V:B clef=bass octave=-1
+X2 | X X | X2 || X2 | X X | X X | X2 || X2 | X X | X2 || X2 | X X | X X | X2 |]

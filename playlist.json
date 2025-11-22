@@ -137,5 +137,142 @@
     "tune": "CrotchBb.abc",
     "title": "Psalm 95",
     "text": "Psalm095.txt"
+  },
+  {
+    "type": "heading",
+    "title": "27th Morning"
+  },
+  {
+    "type": "psalm",
+    "tune": "WesleyFm.abc",
+    "title": "Psalm 120",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm120.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "TurleAb.abc",
+    "title": "Psalm 121",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm121.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "RobinsonEb.abc",
+    "title": "Psalm 122",
+    "subtitle": "A song of ascents. Of David.",
+    "text": "Psalm122.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "PymarG.abc",
+    "title": "Psalm 123",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm123.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "HarrisonEm.abc",
+    "title": "Psalm 124",
+    "subtitle": "A song of ascents. Of David.",
+    "text": "Psalm124a.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "HarrisonE.abc",
+    "text": "Psalm124b.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "KemptonA.abc",
+    "title": "Psalm 125",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm125.txt"
+  },
+  {
+    "type": "heading",
+    "title": "27th Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "TurleEb.abc",
+    "title": "Psalm 126",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm126.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "GossAb.abc",
+    "title": "Psalm 127",
+    "subtitle": "A song of ascents. Of Solomon.",
+    "text": "Psalm127.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "GossEb.abc",
+    "title": "Psalm 128",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm128.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "WalmisleyBb.abc",
+    "title": "Psalm 129",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm129.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "PurcellFm.abc",
+    "title": "Psalm 130",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm130a.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "RimbaultF.abc",
+    "text": "Psalm130b.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "TPurcellFm.abc",
+    "title": "Psalm 131",
+    "subtitle": "A song of ascents. Of David.",
+    "text": "Psalm131a.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "RimbaultF.abc",
+    "text": "Psalm131b.txt"
+  },
+  {
+    "type": "heading",
+    "title": "28th Morning"
+  },
+  {
+    "type": "psalm",
+    "tune": "WickesAb.abc",
+    "title": "Psalm 132",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm132a.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "MasseyEb.abc",
+    "text": "Psalm132b.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "NovelloG.abc",
+    "title": "Psalm 133",
+    "subtitle": "A song of ascents. Of David.",
+    "text": "Psalm133.txt"
+  },
+  {
+    "type": "psalm",
+    "tune": "TallisC.abc",
+    "title": "Psalm 134",
+    "subtitle": "A song of ascents.",
+    "text": "Psalm134.txt"
   }
 ]
