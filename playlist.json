@@ -97,6 +97,17 @@
   },
   {
     "type": "heading",
+    "title": "4th Evening"
+  },
+  {
+    "type": "psalm",
+    "tune": "TurleEbSingle.abc"
+    "title": "Psalm 23",
+    "subtitle": "A psalm of David."
+    "text": "Psalm023.txt"
+  },
+  {
+    "type": "heading",
     "title": "10th Evening"
   },
   {
