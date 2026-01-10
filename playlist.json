@@ -101,7 +101,7 @@
   },
   {
     "type": "psalm",
-    "tune": "TurleEbSingle.abc"
+    "tune": "TurleEbSingle.abc",
     "title": "Psalm 23",
     "subtitle": "A psalm of David."
     "text": "Psalm023.txt"
